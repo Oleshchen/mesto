@@ -1,0 +1,23 @@
+.profile__info-button {
+  background: url("../../../images/profile-button.svg") no-repeat center;
+  background-size: 7px 7px;
+  border: solid 1px white;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin: 0;
+  transition: all 0.4s;
+  opacity: 1;
+  outline: none;
+}
+.profile__info-button:hover {
+  opacity: 0.5;
+}
+@media screen and (min-width: 1280px) {
+  .profile__info-button {
+    height: 24px;
+    width: 24px;
+    background-size: 10px 10px;
+    margin-left: 17px;   
+  }
+}

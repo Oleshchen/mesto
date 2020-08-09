@@ -5,5 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./styles/index.css">
   <title>сервис Mesto</title>    
-</head>    
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/header-logo.svg" alt="логотип сервиса Место">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/profile-kusto.jpg" alt="Фото аватара">
+        <div class="profile__info">
+          <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+          <button class="profile__info-button"></button>
+          <p class="profile__profession">Исследователь океана</p>
+        </div>
+        
+        <button class="profile__add-button"></button>
+      </section>
+      <ul class="elements">
+        <li class="element">
+          <img class="element__image" src="./images/element-gavrilov-posad.jpg" alt="Фотография города Гаврилов-Посад с высоты птичьего полёта">
+          <div class="element__group">
+            <h2 class="element__name">Гаврилов-Посад</h2>
+            <button class="element__like-button"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img class="element__image" src="./images/element-karachaevo-cherkesia.jpg" alt="Фотография горы Карачаево-Черкесии">
+          <div class="element__group">
+            <h2 class="element__name">Карачаево-Черкесия</h2>
+            <button class="element__like-button"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img class="element__image" src="./images/element-konduki.jpg" alt="Фотография карьеров в Кандуках">
+          <div class="element__group">
+            <h2 class="element__name">Кондуки</h2>
+            <button class="element__like-button"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img class="element__image" src="./images/element-onega-lake.jpg" alt="Фотография берега Онежского озера">
+          <div class="element__group">
+            <h2 class="element__name">Онежское озеро</h2>
+            <button class="element__like-button"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img class="element__image" src="./images/element-sevastopol.jpg" alt="Фотография маяка в Севастополе">
+          <div class="element__group">
+            <h2 class="element__name">Севастополь</h2>
+            <button class="element__like-button"></button>
+          </div>
+        </li>
+        <li class="element">
+          <img class="element__image" src="./images/element-vyborg.jpg" alt="Фотография паркак в городе Выборг">
+          <div class="element__group">
+            <h2 class="element__name">Выборг</h2>
+            <button class="element__like-button"></button>
+          </div>
+        </li>
+      </ul>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&#169 2020 Mesto Russia</p>
+    </footer>
+    <form class="popup" action="#">
+      <ul class="popup__container">
+        <li class="popup__list">
+          <h2 class="popup__form-name">Редактировать профиль</h2>  
+        </li>
+        <li class="popup__list">
+          <button class="popup__close-button"></button>
+        </li>
+        <li class="popup__list">
+          <input class="popup__name" type="text" value="Жак-Ив Кусто">
+        </li>
+        <li class="popup__list">
+          <input class="popup__profession" type="text" value="Исследователь океана">
+        </li>
+        <li class="popup__list">
+          <button type="submit" class="popup__save-button">Сохранить</button>
+        </li>
+      </ul> 
+      
+    </form>
+  </div> 
+  <script src="./scripts/main.js"></script> 
+</body>    
 </html>

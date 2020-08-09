@@ -1,0 +1,24 @@
+.footer__copyright {
+  text-align: left;
+  min-width: 282px;
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #545454; 
+}
+
+@media screen and (min-width: 768px) {
+  .footer__copyright {
+    min-width: 582px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .footer__copyright {
+    min-width: 882px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
