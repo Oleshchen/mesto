@@ -68,28 +68,20 @@
       </ul>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">&#169 2020 Mesto Russia</p>
+      <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
-    <form class="popup" action="#">
-      <ul class="popup__container">
-        <li class="popup__list">
-          <h2 class="popup__form-name">Редактировать профиль</h2>  
-        </li>
-        <li class="popup__list">
-          <button class="popup__close-button"></button>
-        </li>
-        <li class="popup__list">
-          <input class="popup__name" type="text" value="Жак-Ив Кусто">
-        </li>
-        <li class="popup__list">
-          <input class="popup__profession" type="text" value="Исследователь океана">
-        </li>
-        <li class="popup__list">
+    <div class="popup">
+      <div class="popup__container">
+        <h2 class="popup__form-name">Редактировать профиль</h2>  
+        <button class="popup__close-button"></button>
+        <form class="popup__form" action="#" name="popup-profile">
+          <input class="popup__form_name" type="text" value="Жак-Ив Кусто" name="popup-profile_name">
+          <input class="popup__form_profession" type="text" value="Исследователь океана" name="popup-profile_profession">
           <button type="submit" class="popup__save-button">Сохранить</button>
-        </li>
-      </ul> 
+        </form>
+      </div> 
       
-    </form>
+    </div>
   </div> 
   <script src="./scripts/main.js"></script> 
 </body>    

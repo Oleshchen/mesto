@@ -6,14 +6,11 @@ let popupTogle = function() {
   popup.classList.toggle ('popup_visibility');
 }
 
-popupOpenButton.addEventListener('click', popupTogle);
-popupCloseButton.addEventListener('click', popupTogle);
-
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
     
-  let nameInput = popup.querySelector('.popup__name');
-  let jobInput = popup.querySelector('.popup__profession');
+  let nameInput = popup.querySelector('.popup__form_name');
+  let jobInput = popup.querySelector('.popup__form_profession');
 
   let nameInputValue = nameInput.value;
   let jobInputValue = jobInput.value;
@@ -24,6 +21,7 @@ function formSubmitHandler (evt) {
   infoName.textContent = nameInputValue;
   profession.textContent = jobInputValue;
   popup.classList.remove('popup_visibility');
-
 }
+popupOpenButton.addEventListener('click', popupTogle);
+popupCloseButton.addEventListener('click', popupTogle);
 popup.addEventListener('submit', formSubmitHandler);  
