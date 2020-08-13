@@ -6,10 +6,14 @@ let jobInput = popup.querySelector('.popup__input_profession');
 let infoName = document.querySelector('.profile__info-name');
 let profession = document.querySelector('.profile__profession');
 
+
 let popupTogle = function() {
+  let professionValue = profession.textContent;
+  let infoNameValue = infoName.textContent;
+  jobInput.value = professionValue;
+  nameInput.value = infoNameValue;
   popup.classList.toggle ('popup_visibility');
-  jobInput.value = '';
-  nameInput.value = '';
+  
 }
 
 function formSubmitHandler (evt) {
