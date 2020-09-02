@@ -4,14 +4,27 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 150px;
+  top: 25%;
   left: 0;
   right: 0;
   bottom: 0;
   background: #FFF;
   border-radius: 10px;
-  max-width: 430px;
-  max-height: 330px;
+  max-width: 240px;
+  max-height: 258px;
   margin: 0 auto;
   padding: 0;
 }
+
+
+@media screen and (min-width: 768px) {
+  .popup__container {
+    top: 25%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    max-width: 430px;
+    max-height: 330px;
+  }
+}  

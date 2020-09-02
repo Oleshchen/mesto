@@ -1,5 +1,5 @@
-.element__like-button {
-  background: url("../../../images/element-like.svg") no-repeat center;
+.element__like-button_push {
+  background-image: url("../../../../images/element-like-push.svg");  
   background-size: 20px 18px;
   border: none;
   outline: none;
@@ -14,6 +14,6 @@
     
 }
 
-.element__like-button:hover {
+.element__like-button_push:hover {
   opacity: 0.5;
 }

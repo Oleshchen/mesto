@@ -1,3 +1,4 @@
 .popup_visibility {
-  display: block;    
+  visibility: visible;
+  opacity: 1;  
 }

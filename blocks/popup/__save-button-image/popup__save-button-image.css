@@ -1,0 +1,29 @@
+.popup__save-button-image {
+    min-width: 200px;
+    width: fit-content;
+    min-height: 40px;
+    align-self: center;
+    background: #000000;
+    border-radius: 2px;
+    color: #ffffff;
+    border: none;
+    margin-top: 36px;
+    margin-bottom: 30px;
+    transition: all 0.5s;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+  }
+
+@media screen and (min-width: 768px){
+  .popup__save-button-image {
+    min-width: 358px;
+    min-height: 50px;
+    margin-top: 48px;
+    margin-bottom: 0;
+  }
+} 
+.popup__save-button-image:hover {
+  background: rgba(0, 0, 0, 0.8)
+   
+  }

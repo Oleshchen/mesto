@@ -23,65 +23,56 @@
         <button class="profile__add-button"></button>
       </section>
       <ul class="elements">
-        <li class="element">
-          <img class="element__image" src="./images/element-gavrilov-posad.jpg" alt="Фотография города Гаврилов-Посад с высоты птичьего полёта">
-          <div class="element__group">
-            <h2 class="element__name">Гаврилов-Посад</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/element-karachaevo-cherkesia.jpg" alt="Фотография горы Карачаево-Черкесии">
-          <div class="element__group">
-            <h2 class="element__name">Карачаево-Черкесия</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/element-konduki.jpg" alt="Фотография карьеров в Кандуках">
-          <div class="element__group">
-            <h2 class="element__name">Кондуки</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/element-onega-lake.jpg" alt="Фотография берега Онежского озера">
-          <div class="element__group">
-            <h2 class="element__name">Онежское озеро</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/element-sevastopol.jpg" alt="Фотография маяка в Севастополе">
-          <div class="element__group">
-            <h2 class="element__name">Севастополь</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__image" src="./images/element-vyborg.jpg" alt="Фотография паркак в городе Выборг">
-          <div class="element__group">
-            <h2 class="element__name">Выборг</h2>
-            <button class="element__like-button"></button>
-          </div>
-        </li>
+        
       </ul>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+      <p class="footer__copyright">&#169; 2020 Mesto Russia</p>            
     </footer>
-    <div class="popup">
+    
+    <div class="popup popup_profile-edit">
       <div class="popup__container">
         <h2 class="popup__form-name">Редактировать профиль</h2>  
-        <button class="popup__close-button"></button>
+        <button class="popup__close-button-profile"></button>
         <form class="popup__form" action="#" name="popup-profile" autocomplete="off">
           <input class="popup__input popup__input_name" type="text" placeholder="Имя" name="popup-profile_name">
           <input class="popup__input popup__input_profession" type="text" placeholder="Профессия" name="popup-profile_profession">
-          <button type="submit" class="popup__save-button">Сохранить</button>
+          <button type="submit" class="popup__save-button-profile">Сохранить</button>
         </form>
-      </div> 
-      
+      </div>
     </div>
+
+    <div class="popup popup_image-add">
+      <div class="popup__container">
+        <h2 class="popup__form-name">Новое место</h2>  
+        <button class="popup__close-button-element"></button>
+        <form class="popup__form" action="#" name="popup-element-editor" autocomplete="off">
+          <input class="popup__input popup__input_image-name" type="text" placeholder="Название" name="popup-element-name">
+          <input class="popup__input popup__input_image-src" type="text" placeholder="Ссылка на картинку" name="popup-element-src">
+          <button type="submit" class="popup__save-button-image">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_viewer">
+      <div class="popup__image-view">
+        <button class="popup__close-button-image"></button>
+        <img class="popup__full-image" src="" alt="">
+        <p class="popup__viewer-text"></p>
+      </div>
+    </div>
+
+    <template id="cardTemplate">
+      <li class="element">
+        
+          <img class="element__image" src="" alt="">
+          <button class="element__delete-button"></button>
+          <div class="element__group">
+            <h2 class="element__name"></h2>
+            <button class="element__like-button"></button>
+          </div>
+      </li>
+    </template>
   </div> 
   <script src="./scripts/main.js"></script> 
 </body>    
