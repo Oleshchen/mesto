@@ -40,7 +40,6 @@ const mestoInputSrc = document.querySelector('.popup__input_image-src');
 const infoName = document.querySelector('.profile__info-name');
 const profession = document.querySelector('.profile__profession');
 const elementImage = document.querySelector('.element__image');
-const elementName = document.querySelector('.element__name'); 
 const elementsContainer = document.querySelector('.elements');
 const elementAddButton = document.querySelector('.profile__add-button ');
 
@@ -48,9 +47,11 @@ const elementAddButton = document.querySelector('.profile__add-button ');
 
 const addElement = function(card)  {
   const element = document.querySelector('#cardTemplate').content.cloneNode(true);
-  element.querySelector('.element__name').textContent = card.name;
-  element.querySelector('.element__image').src = card.link;
-  element.querySelector('.element__image').alt = card.name;
+  const elementName = element.querySelector('.element__name');
+  const elementImage = element.querySelector('.element__image'); 
+  elementName.textContent = card.name;
+  elementImage.src = card.link;
+  elementImage.alt = card.name;
   
   element.querySelector('.element__like-button').addEventListener('click', event => {
     event.target.classList.toggle('element__like-button_push');
@@ -60,45 +61,40 @@ const addElement = function(card)  {
     event.target.closest('.element').remove();
   });
 
-  element.querySelector('.element__image').addEventListener('click', (event) => {
+  elementImage.addEventListener('click', (event) => {
     
     document.querySelector('.popup__full-image').src = event.target.src;
     document.querySelector('.popup__viewer-text').textContent = card.name; 
 
     popupViewerOpen.classList.toggle('popup_visibility');
   });
-       
-  elementsContainer.prepend(element);
+  elementsContainer.prepend(element)
 }
+
  // открываем-закрываем popup's
-popupTogle = () => {
-  if (event.target == popupOpenButton) {
-    let professionValue = profession.textContent;
-    let infoNameValue = infoName.textContent;
-    jobInput.value = professionValue;
-    nameInput.value = infoNameValue;
+popupTogle = (pop) => {
+  if (pop == popupEditorForm) {
     popupEditorForm.classList.toggle ('popup_visibility');
   }
-  else if (event.target == elementAddButton) {
+  else if (pop == popupElementAddForm) {
     popupElementAddForm.classList.toggle ('popup_visibility');
   }
-  
   else {
     popupEditorForm.classList.remove ('popup_visibility'); 
     popupElementAddForm.classList.remove('popup_visibility');
-    popupViewerOpen .classList.remove('popup_visibility');
+    popupViewerOpen.classList.remove('popup_visibility');
+    
   }  
 }
 
 // функции для отправки submit
 function formSubmitProfile (event) {
   event.preventDefault();
-   
-  let nameInputValue = nameInput.value;
-  let jobInputValue = jobInput.value;
+  const nameInputValue = nameInput.value;
+  const jobInputValue = jobInput.value;
   infoName.textContent = nameInputValue;
   profession.textContent = jobInputValue;
-  popup.classList.remove('popup_visibility');
+  popupTogle();
 }
 
 function formSubmitElement (event) {
@@ -108,20 +104,24 @@ function formSubmitElement (event) {
     link: mestoInputSrc.value    
   }
   addElement(addNewElement);
-  mestoInputName.value = '';
-  mestoInputSrc.value = '';
-  popupElementAddForm.classList.remove('popup_visibility');  
+  mestoInputName.form.reset();
+  mestoInputSrc.form.reset();
+  popupTogle();  
 }  
 
 // слушатели событий
 popupOpenButton.addEventListener('click', (event) => {
-  popupTogle();
+  const professionValue = profession.textContent;
+  const infoNameValue = infoName.textContent;
+  jobInput.value = professionValue;
+  nameInput.value = infoNameValue;
+  popupTogle(popupEditorForm);
 });
-popupEditorForm.addEventListener('submit', formSubmitProfile, popupTogle);
+popupEditorForm.addEventListener('submit', formSubmitProfile);
 popupElementAddForm.addEventListener('submit', formSubmitElement);
 
 elementAddButton.addEventListener('click',  (event) => { 
-  popupTogle();
+  popupTogle(popupElementAddForm);
 }); 
 popupCloseButtonProfile.addEventListener('click', (event) => {
   popupTogle();
