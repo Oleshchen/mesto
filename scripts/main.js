@@ -42,6 +42,7 @@ const profession = document.querySelector('.profile__profession');
 const elementImage = document.querySelector('.element__image');
 const elementsContainer = document.querySelector('.elements');
 const elementAddButton = document.querySelector('.profile__add-button ');
+const popupForm = popupElementAddForm.querySelector('.popup__form');
 
 // добавляем карточки 
 
@@ -68,24 +69,14 @@ const addElement = function(card)  {
 
     popupViewerOpen.classList.toggle('popup_visibility');
   });
-  elementsContainer.prepend(element)
+  return element;
+  
 }
 
- // открываем-закрываем popup's
-popupTogle = (pop) => {
-  if (pop == popupEditorForm) {
-    popupEditorForm.classList.toggle ('popup_visibility');
-  }
-  else if (pop == popupElementAddForm) {
-    popupElementAddForm.classList.toggle ('popup_visibility');
-  }
-  else {
-    popupEditorForm.classList.remove ('popup_visibility'); 
-    popupElementAddForm.classList.remove('popup_visibility');
-    popupViewerOpen.classList.remove('popup_visibility');
-    
-  }  
-}
+const prependElement = someElement => {elementsContainer.prepend(addElement(someElement));}
+
+// открываем-закрываем popup's
+const popupTogle = pop => {pop.classList.toggle ('popup_visibility');}
 
 // функции для отправки submit
 function formSubmitProfile (event) {
@@ -94,7 +85,7 @@ function formSubmitProfile (event) {
   const jobInputValue = jobInput.value;
   infoName.textContent = nameInputValue;
   profession.textContent = jobInputValue;
-  popupTogle();
+  popupTogle(popupEditorForm);
 }
 
 function formSubmitElement (event) {
@@ -103,14 +94,13 @@ function formSubmitElement (event) {
     name: mestoInputName.value,
     link: mestoInputSrc.value    
   }
-  addElement(addNewElement);
-  mestoInputName.form.reset();
-  mestoInputSrc.form.reset();
-  popupTogle();  
+  prependElement(addNewElement);
+  popupForm.reset();
+  popupTogle(popupElementAddForm);
 }  
 
 // слушатели событий
-popupOpenButton.addEventListener('click', (event) => {
+popupOpenButton.addEventListener('click', () => {
   const professionValue = profession.textContent;
   const infoNameValue = infoName.textContent;
   jobInput.value = professionValue;
@@ -120,18 +110,19 @@ popupOpenButton.addEventListener('click', (event) => {
 popupEditorForm.addEventListener('submit', formSubmitProfile);
 popupElementAddForm.addEventListener('submit', formSubmitElement);
 
-elementAddButton.addEventListener('click',  (event) => { 
+elementAddButton.addEventListener('click',  () => { 
   popupTogle(popupElementAddForm);
 }); 
-popupCloseButtonProfile.addEventListener('click', (event) => {
-  popupTogle();
+popupCloseButtonProfile.addEventListener('click', () => {
+  popupTogle(popupEditorForm);
 });
-popupCloseButtonElement.addEventListener('click', (event) => {
-  popupTogle();
+popupCloseButtonElement.addEventListener('click', () => {
+  popupForm.reset();
+  popupTogle(popupElementAddForm);
 });
-popupCloseButtonImageView.addEventListener('click', (event) => {
-  popupTogle();
+popupCloseButtonImageView.addEventListener('click', () => {
+  popupTogle(popupViewerOpen);
 });
 
-initialCards.forEach(addElement);
+initialCards.forEach(prependElement);
 
