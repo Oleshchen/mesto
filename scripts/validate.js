@@ -29,12 +29,10 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;  
+    disableButton(buttonElement, inactiveButtonClass);  
   }
- else {buttonElement.classList.remove(inactiveButtonClass);
-  buttonElement.disabled = false;
-}
+  else {buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = false;}
 }  
 
 const setEventListeners = (formElement, {inputSelector, submitButtonProfile, inactiveButtonClass, inputErrorClass, errorClass}, ...rest) => {
@@ -58,6 +56,12 @@ const enableValidation = ({formSelector, ...rest}) => {
     setEventListeners(formElement, rest);
     
   });
+}
+
+const disableButton = (button) => {
+    button.classList.add('popup__save-button_disabled');
+    button.disabled = true;
+    ;
 }
 
 enableValidation({

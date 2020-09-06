@@ -45,28 +45,33 @@ const elementAddButton = document.querySelector('.profile__add-button ');
 const popupForm = popupElementAddForm.querySelector('.popup__form');
 const submitButtonPopupElement = document.querySelector('.popup__save-button-element');
 
+
 // добавляем карточки 
 
 const addElement = function(card)  {
   const element = document.querySelector('#cardTemplate').content.cloneNode(true);
   const elementName = element.querySelector('.element__name');
   const elementImage = element.querySelector('.element__image'); 
+  const elementFullImage = document.querySelector('.popup__full-image');
+  const elementViewerText = document.querySelector('.popup__viewer-text');
+  const elementDeleteButton = element.querySelector('.element__delete-button');
+  const elementLikeButton = element.querySelector('.element__like-button');
   elementName.textContent = card.name;
   elementImage.src = card.link;
   elementImage.alt = card.name;
   
-  element.querySelector('.element__like-button').addEventListener('click', event => {
+  elementLikeButton.addEventListener('click', event => {
     event.target.classList.toggle('element__like-button_push');
   });
    
-  element.querySelector('.element__delete-button').addEventListener('click', event => {
+  elementDeleteButton.addEventListener('click', event => {
     event.target.closest('.element').remove();
   });
 
   elementImage.addEventListener('click', (event) => {
     
-    document.querySelector('.popup__full-image').src = event.target.src;
-    document.querySelector('.popup__viewer-text').textContent = card.name; 
+    elementFullImage.src = event.target.src;
+    elementViewerText.textContent = card.name; 
     popupTogle(popupViewerOpen); 
     
   });
@@ -120,6 +125,8 @@ function formSubmitElement (event) {
   prependElement(addNewElement);
   popupForm.reset();
   popupTogle(popupElementAddForm);
+  
+
 }  
 
 // слушатели событий
@@ -136,17 +143,18 @@ popupEditorForm.addEventListener('submit', formSubmitProfile);
 popupElementAddForm.addEventListener('submit', formSubmitElement);
 
 function popupOverlayClose(pop) {
-pop.addEventListener('mousedown', (event) => {
-  if(event.target === event.currentTarget) {
-    popupTogle(pop);
-  }
-});
+  pop.addEventListener('mousedown', (event) => {
+    if(event.target === event.currentTarget) {
+      popupTogle(pop);
+    }
+  });
 }
 elementAddButton.addEventListener('click',  () => {
   clearPopup(popupElementAddForm); 
   popupTogle(popupElementAddForm);
-  submitButtonPopupElement.classList.add('popup__save-button_disabled');
-  submitButtonPopupElement.disabled = true;
+  disableButton(submitButtonPopupElement);
+  
+  
   
 }); 
 popupCloseButtonProfile.addEventListener('click', () => {
