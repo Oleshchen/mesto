@@ -34,10 +34,12 @@
       <div class="popup__container">
         <h2 class="popup__form-name">Редактировать профиль</h2>  
         <button class="popup__close-button-profile"></button>
-        <form class="popup__form" action="#" name="popup-profile" autocomplete="off">
-          <input class="popup__input popup__input_name" type="text" placeholder="Имя" name="popup-profile_name">
-          <input class="popup__input popup__input_profession" type="text" placeholder="Профессия" name="popup-profile_profession">
-          <button type="submit" class="popup__save-button-profile">Сохранить</button>
+        <form class="popup__form" action="#" name="popup-profile" autocomplete="off" novalidate>
+          <input class="popup__input popup__input_name" type="text" placeholder="Имя" id="input_name" name="popup-profile_name" maxlength="40" minlength="2" required>
+          <span class="popup__error popup__error_hidden" id="input_name-error"> </span>
+          <input class="popup__input popup__input_profession" type="text" placeholder="Профессия" id="input_profession" name="popup-profile_profession" maxlength="200" minlength="2" required>
+          <span class="popup__error popup__error_hidden" id="input_profession-error"> </span>
+          <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
     </div>
@@ -46,10 +48,12 @@
       <div class="popup__container">
         <h2 class="popup__form-name">Новое место</h2>  
         <button class="popup__close-button-element"></button>
-        <form class="popup__form" action="#" name="popup-element-editor" autocomplete="off">
-          <input class="popup__input popup__input_image-name" type="text"  required placeholder="Название" name="popup-element-name">
-          <input class="popup__input popup__input_image-src" type="url" required placeholder="Ссылка на картинку" name="popup-element-src">
-          <button type="submit" class="popup__save-button-image">Сохранить</button>
+        <form class="popup__form" action="#" name="popup-element-editor" autocomplete="off" novalidate>
+          <input class="popup__input popup__input_image-name" type="text"  id="image-name" required placeholder="Название" name="popup-element-name" maxlength="30" minlength="1">
+          <span class="popup__error popup__error_hidden" id="image-name-error"></span>
+          <input class="popup__input popup__input_image-src" type="url" id="image-src" required placeholder="Ссылка на картинку" name="popup-element-src">
+          <span class="popup__error popup__error_hidden" id="image-src-error"></span>
+          <button type="submit" class="popup__save-button popup__save-button-element">Сохранить</button>
         </form>
       </div>
     </div>
@@ -74,6 +78,7 @@
       </li>
     </template>
   </div> 
-  <script src="./scripts/main.js"></script> 
+  <script src="./scripts/index.js"></script>
+   <script src="./scripts/validate.js"></script> 
 </body>    
 </html>

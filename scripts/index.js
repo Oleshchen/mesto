@@ -43,6 +43,7 @@ const elementImage = document.querySelector('.element__image');
 const elementsContainer = document.querySelector('.elements');
 const elementAddButton = document.querySelector('.profile__add-button ');
 const popupForm = popupElementAddForm.querySelector('.popup__form');
+const submitButtonPopupElement = document.querySelector('.popup__save-button-element');
 
 // добавляем карточки 
 
@@ -66,8 +67,8 @@ const addElement = function(card)  {
     
     document.querySelector('.popup__full-image').src = event.target.src;
     document.querySelector('.popup__viewer-text').textContent = card.name; 
-
-    popupViewerOpen.classList.toggle('popup_visibility');
+    popupTogle(popupViewerOpen); 
+    
   });
   return element;
   
@@ -75,8 +76,30 @@ const addElement = function(card)  {
 
 const prependElement = someElement => {elementsContainer.prepend(addElement(someElement));}
 
+function evtListener(pop) {
+  if (pop.classList.contains('popup_visibility')) {
+    document.addEventListener('keydown', keyEventSwitch)
+  }
+  else {
+    document.removeEventListener('keydown', keyEventSwitch)
+  }
+
+}
+
+const keyEventSwitch = (event) => {
+  if(event.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_visibility');
+    popupTogle(popupOpened);
+  }
+}
+
+
 // открываем-закрываем popup's
-const popupTogle = pop => {pop.classList.toggle ('popup_visibility');}
+const popupTogle = pop => {
+  pop.classList.toggle ('popup_visibility');
+  evtListener(pop);
+  popupOverlayClose(pop);
+}
 
 // функции для отправки submit
 function formSubmitProfile (event) {
@@ -105,15 +128,29 @@ popupOpenButton.addEventListener('click', () => {
   const infoNameValue = infoName.textContent;
   jobInput.value = professionValue;
   nameInput.value = infoNameValue;
+  clearPopup(popupEditorForm);
   popupTogle(popupEditorForm);
+  
 });
 popupEditorForm.addEventListener('submit', formSubmitProfile);
 popupElementAddForm.addEventListener('submit', formSubmitElement);
 
-elementAddButton.addEventListener('click',  () => { 
+function popupOverlayClose(pop) {
+pop.addEventListener('mousedown', (event) => {
+  if(event.target === event.currentTarget) {
+    popupTogle(pop);
+  }
+});
+}
+elementAddButton.addEventListener('click',  () => {
+  clearPopup(popupElementAddForm); 
   popupTogle(popupElementAddForm);
+  submitButtonPopupElement.classList.add('popup__save-button_disabled');
+  submitButtonPopupElement.disabled = true;
+  
 }); 
 popupCloseButtonProfile.addEventListener('click', () => {
+  
   popupTogle(popupEditorForm);
 });
 popupCloseButtonElement.addEventListener('click', () => {
@@ -121,6 +158,7 @@ popupCloseButtonElement.addEventListener('click', () => {
   popupTogle(popupElementAddForm);
 });
 popupCloseButtonImageView.addEventListener('click', () => {
+  
   popupTogle(popupViewerOpen);
 });
 
