@@ -61,7 +61,7 @@ const enableValidation = ({formSelector, ...rest}) => {
 const disableButton = (button) => {
     button.classList.add('popup__save-button_disabled');
     button.disabled = true;
-    ;
+    
 }
 
 enableValidation({

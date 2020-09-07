@@ -83,10 +83,12 @@ const prependElement = someElement => {elementsContainer.prepend(addElement(some
 
 function evtListener(pop) {
   if (pop.classList.contains('popup_visibility')) {
-    document.addEventListener('keydown', keyEventSwitch)
+    document.addEventListener('keydown', keyEventSwitch);
+    
   }
   else {
-    document.removeEventListener('keydown', keyEventSwitch)
+    document.removeEventListener('keydown', keyEventSwitch);
+    pop.removeEventListener('mousedown', popupOverlayClose);
   }
 
 }
@@ -97,13 +99,18 @@ const keyEventSwitch = (event) => {
     popupTogle(popupOpened);
   }
 }
-
-
+function popupOverlayClose(pop) {
+  pop.addEventListener('mousedown', (event) => {
+    if(event.target === event.currentTarget) {
+      popupTogle(pop);
+    }
+  });
+}
 // открываем-закрываем popup's
 const popupTogle = pop => {
   pop.classList.toggle ('popup_visibility');
-  evtListener(pop);
   popupOverlayClose(pop);
+  evtListener(pop);
 }
 
 // функции для отправки submit
@@ -142,13 +149,7 @@ popupOpenButton.addEventListener('click', () => {
 popupEditorForm.addEventListener('submit', formSubmitProfile);
 popupElementAddForm.addEventListener('submit', formSubmitElement);
 
-function popupOverlayClose(pop) {
-  pop.addEventListener('mousedown', (event) => {
-    if(event.target === event.currentTarget) {
-      popupTogle(pop);
-    }
-  });
-}
+
 elementAddButton.addEventListener('click',  () => {
   clearPopup(popupElementAddForm); 
   popupTogle(popupElementAddForm);
