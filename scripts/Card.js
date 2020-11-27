@@ -1,3 +1,4 @@
+import {imageSource, imageName} from './consts.js'
 export class Card {
     constructor(data, cardSelector, openPopup, popupPlace) {
         this._image = data.link;
@@ -21,7 +22,7 @@ export class Card {
   
     // Удаляем элемент
     _deleteCardClick() {
-        this._element.closest('.element').remove();
+        this._element.remove();
         this._element = null;
     }
     // Ставим Like
@@ -30,10 +31,9 @@ export class Card {
     }
     // Открываем Popup для просмотра изображения элемента
     _imageViewClick() {
-        const imageSource = document.querySelector('.popup__full-image');
-        const imageName = document.querySelector('.popup__viewer-text');
         imageSource.src = this._image;
         imageName.textContent = this._text;
+        imageSource.alt = this._text;
         this._openPopup(this._popupPlace);
       }
 
@@ -56,11 +56,10 @@ export class Card {
     // публичный метод создает и возвращает элемент
     generateElement() {
         this._element = this._getTemplate();
-
         this._setEventListeners();
-
-        this._element.querySelector('.element__image').src = this._image;
-        this._element.querySelector('.element__image').alt = this._text;
+        const elementImage = this._element.querySelector('.element__image');
+        elementImage.src = this._image;
+        elementImage.alt = this._text;
         this._element.querySelector('.element__name').textContent = this._text;
 
         return this._element;   
